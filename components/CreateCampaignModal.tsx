@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createCampaign } from "@/lib/firestore";
+/* import { createCampaign } from "@/lib/firestore"; */
 
 interface CreateCampaignModalProps {
   isOpen: boolean;
@@ -30,14 +30,8 @@ export default function CreateCampaignModal({
 
     setIsSubmitting(true);
     try {
-      await createCampaign({
-        id: "",
-        title,
-        description,
-        targetAmount: target,
-        amountDonated: 0,
-        createdAt: Date.now(),
-      });
+      // Skip database save
+      // await createCampaign({...});
 
       // Store campaign data for success modal
       setCreatedCampaignData({
@@ -50,10 +44,10 @@ export default function CreateCampaignModal({
       setDescription("");
       setTarget(0);
 
-      // First close the main modal, then show success modal
+      // Close main modal
       onClose();
 
-      // Small delay to ensure smooth transition between modals
+      // Small delay to ensure smooth transition
       setTimeout(() => {
         setShowSuccessModal(true);
       }, 300);
@@ -63,6 +57,48 @@ export default function CreateCampaignModal({
       setIsSubmitting(false);
     }
   };
+
+  /*  const handleSubmit = async () => {
+    if (!title || !description || target <= 0) {
+      alert("Please fill in all fields correctly");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await createCampaign({
+        id: "",
+        title,
+        description,
+        targetAmount: target,
+        amountDonated: 0,
+        createdAt: Date.now(),
+      });
+
+      
+      setCreatedCampaignData({
+        title,
+        target,
+      });
+
+      
+      setTitle("");
+      setDescription("");
+      setTarget(0);
+
+     
+      onClose();
+
+     
+      setTimeout(() => {
+        setShowSuccessModal(true);
+      }, 300);
+    } catch (error) {
+      alert("Failed to create campaign. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }; */
 
   const handleSuccessModalClose = () => {
     setShowSuccessModal(false);

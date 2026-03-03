@@ -19,10 +19,10 @@ export interface Campaign {
 }
 
 // CREATE CAMPAIGN
-export const createCampaign = async (campaign: Campaign) => {
+/* export const createCampaign = async (campaign: Campaign) => {
   const docRef = await addDoc(collection(db, "campaigns"), campaign);
   return docRef.id;
-};
+}; */
 
 // GET CAMPAIGNS
 export const getCampaigns = async (): Promise<Campaign[]> => {
