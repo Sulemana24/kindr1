@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kindr - Crowdfunding for a Better World",
+  title: "Kindr - Kindness in action",
   description:
     "Empowering changemakers through crowdfunding. Create and support campaigns for a better world with Kindr.",
   icons: {

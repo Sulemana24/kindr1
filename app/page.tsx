@@ -49,9 +49,14 @@ export default function Home() {
             <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center">
               <Image src={Logo} alt="Kindr Logo" width={32} height={32} />
             </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-              Kindr
-            </h1>
+            <div className="block text-center">
+              <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+                Kindr
+              </h1>
+              <span className="block text-xs font-medium text-gray-500 mt-1">
+                Kindness in action
+              </span>
+            </div>
           </div>
           <div className="text-sm text-gray-500">
             <span className="bg-gray-100 px-3 py-1 rounded-full">

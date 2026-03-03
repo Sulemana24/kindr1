@@ -84,32 +84,31 @@ export default function CreateCampaignModal({
       {/* Main Campaign Creation Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4"
           onClick={handleOverlayClick}
         >
-          <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-gray-100 animate-fade-in">
+          <div className="w-full max-w-[95%] sm:max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 animate-fade-in max-h-[90vh] overflow-y-auto">
             {/* Header with close button */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              <div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+            <div className="flex items-start justify-between p-4 sm:p-6 border-b border-gray-100 sticky top-0 bg-white z-10">
+              <div className="pr-4">
+                <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
                   Register New Campaign
                 </h3>
-                <p className="text-gray-500 text-sm mt-1">
-                  Fill in the details below to start your fundraising journey.{" "}
-                  <br />
-                  <span className="text-xs text-red-400 mt-2 block">
-                    Please note: 7% fees will be deducted from your campaign
-                    total.
-                  </span>
+                <p className="text-gray-500 text-xs sm:text-sm mt-1">
+                  Fill in the details below to start your fundraising journey.
+                </p>
+                <p className="text-xs text-red-400 mt-2">
+                  Please note: 7% fees will be deducted from your campaign
+                  total.
                 </p>
               </div>
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                className="text-gray-400 hover:text-gray-600 transition-colors duration-200 flex-shrink-0"
                 aria-label="Close modal"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5 sm:w-6 sm:h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -125,35 +124,35 @@ export default function CreateCampaignModal({
             </div>
 
             {/* Form content */}
-            <div className="p-6">
-              <div className="space-y-4">
+            <div className="p-4 sm:p-6">
+              <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                     Campaign Title
                   </label>
                   <input
                     placeholder="e.g., Help Build a Community Library"
                     value={title}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-gray-800 placeholder-gray-400"
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                     Description
                   </label>
                   <textarea
                     placeholder="Tell your story and explain why this campaign matters..."
                     value={description}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-gray-800 placeholder-gray-400 resize-none"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-gray-800 placeholder-gray-400 resize-none"
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                     Target Amount (Ghc)
                   </label>
                   <input
@@ -162,7 +161,7 @@ export default function CreateCampaignModal({
                     step="100"
                     placeholder="5000"
                     value={target || ""}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-gray-800 placeholder-gray-400"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-gray-800 placeholder-gray-400"
                     onChange={(e) => setTarget(Number(e.target.value))}
                   />
                   {target > 0 && (
@@ -175,22 +174,22 @@ export default function CreateCampaignModal({
             </div>
 
             {/* Footer with buttons */}
-            <div className="flex gap-3 p-6 border-t border-gray-100">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 p-4 sm:p-6 border-t border-gray-100">
               <button
                 onClick={onClose}
-                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition-all duration-200"
+                className="w-full sm:flex-1 order-2 sm:order-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2 sm:py-3 px-4 rounded-xl transition-all duration-200 text-sm sm:text-base"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting || !title || !description || target <= 0}
-                className="flex-1 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-pink-600/20"
+                className="w-full sm:flex-1 order-1 sm:order-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold py-2 sm:py-3 px-4 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-pink-600/20 text-sm sm:text-base"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
                     <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -209,7 +208,7 @@ export default function CreateCampaignModal({
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       />
                     </svg>
-                    Registring...
+                    <span className="text-sm sm:text-base">Registring...</span>
                   </span>
                 ) : (
                   "Register Campaign"
@@ -220,22 +219,22 @@ export default function CreateCampaignModal({
         </div>
       )}
 
-      {/* Success Modal */}
+      {/* Success Modal - Fully Responsive */}
       {showSuccessModal && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-4"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-2 sm:p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               handleSuccessModalClose();
             }
           }}
         >
-          <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-gray-100 animate-fade-in overflow-hidden">
+          <div className="w-full max-w-[95%] sm:max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 animate-fade-in overflow-hidden max-h-[95vh] overflow-y-auto">
             {/* Success Header with Celebration Gradient */}
-            <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-8 text-center">
-              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+            <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-6 sm:p-8 text-center">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 backdrop-blur-sm">
                 <svg
-                  className="w-10 h-10 text-white"
+                  className="w-8 h-8 sm:w-10 sm:h-10 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -248,39 +247,45 @@ export default function CreateCampaignModal({
                   />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">
                 Success! 🎉
               </h3>
-              <p className="text-white/90 text-lg">
+              <p className="text-white/90 text-base sm:text-lg">
                 Your campaign has been created
               </p>
             </div>
 
             {/* Campaign Summary */}
-            <div className="p-8">
-              <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-6 mb-6">
-                <h4 className="font-semibold text-gray-700 mb-3">
+            <div className="p-4 sm:p-6 md:p-8">
+              <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
+                <h4 className="font-semibold text-gray-700 mb-2 sm:mb-3 text-sm sm:text-base">
                   Campaign Details:
                 </h4>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-pink-600 text-sm">📋</span>
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-pink-600 text-xs sm:text-sm">
+                        📋
+                      </span>
                     </div>
-                    <div>
-                      <p className="text-sm text-gray-500">Title</p>
-                      <p className="font-medium text-gray-800">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs sm:text-sm text-gray-500">Title</p>
+                      <p className="font-medium text-gray-800 text-sm sm:text-base break-words">
                         {createdCampaignData.title}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-purple-600 text-sm">💰</span>
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-purple-600 text-xs sm:text-sm">
+                        💰
+                      </span>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Target Goal</p>
-                      <p className="font-medium text-gray-800">
+                      <p className="text-xs sm:text-sm text-gray-500">
+                        Target Goal
+                      </p>
+                      <p className="font-medium text-gray-800 text-sm sm:text-base">
                         Ghc {createdCampaignData.target.toLocaleString()}
                       </p>
                     </div>
@@ -289,63 +294,63 @@ export default function CreateCampaignModal({
               </div>
 
               {/* Next Steps */}
-              <div className="mb-8">
-                <h4 className="font-semibold text-gray-700 mb-3">
+              <div className="mb-6 sm:mb-8">
+                <h4 className="font-semibold text-gray-700 mb-2 sm:mb-3 text-sm sm:text-base">
                   What&apos;s next?
                 </h4>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <span className="text-green-500">•</span>
-                    Share your campaign with friends and family
+                <ul className="space-y-1.5 sm:space-y-2 text-gray-600">
+                  <li className="flex items-start gap-2 text-xs sm:text-sm">
+                    <span className="text-green-500 flex-shrink-0">•</span>
+                    <span>Share your campaign with friends and family</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-green-500">•</span>
-                    Track donations in real-time
+                  <li className="flex items-start gap-2 text-xs sm:text-sm">
+                    <span className="text-green-500 flex-shrink-0">•</span>
+                    <span>Track donations in real-time</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-green-500">•</span>
-                    Update your supporters with progress
+                  <li className="flex items-start gap-2 text-xs sm:text-sm">
+                    <span className="text-green-500 flex-shrink-0">•</span>
+                    <span>Update your supporters with progress</span>
                   </li>
                 </ul>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2 sm:gap-3">
                 <button
                   onClick={handleSuccessModalClose}
-                  className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition-all duration-200"
+                  className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 sm:py-3 px-4 rounded-xl transition-all duration-200 text-sm sm:text-base"
                 >
                   Close
                 </button>
               </div>
 
               {/* Social Share Buttons */}
-              <div className="mt-6 pt-6 border-t border-gray-100">
-                <p className="text-sm text-gray-500 text-center mb-3">
+              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-100">
+                <p className="text-xs sm:text-sm text-gray-500 text-center mb-2 sm:mb-3">
                   Spread the word!
                 </p>
-                <div className="flex justify-center gap-3">
-                  <button className="w-10 h-10 bg-[#1DA1F2] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                <div className="flex justify-center gap-2 sm:gap-3">
+                  <button className="w-8 h-8 sm:w-10 sm:h-10 bg-[#1DA1F2] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.104c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0021.775-4.802 13.95 13.95 0 001.548-5.95c0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                     </svg>
                   </button>
-                  <button className="w-10 h-10 bg-[#4267B2] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                  <button className="w-8 h-8 sm:w-10 sm:h-10 bg-[#4267B2] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                   </button>
-                  <button className="w-10 h-10 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                  <button className="w-8 h-8 sm:w-10 sm:h-10 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
