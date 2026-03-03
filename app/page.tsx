@@ -64,8 +64,28 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
+        {/* Campaigns Section */}
+        <section>
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-2xl font-bold text-gray-900">
+              Active Campaigns
+            </h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent ml-4"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {campaigns.map((campaign) => (
+              <div
+                key={campaign.id}
+                className="transform transition-all duration-300 hover:scale-[1.02]"
+              >
+                <CampaignCard campaign={campaign} onOpenCreate={openModal} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="text-center mt-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Need Help? Create a fundraising campaign today! 🌟
           </h2>
@@ -102,27 +122,6 @@ export default function Home() {
 
         {/* Create Campaign Modal */}
         <CreateCampaignModal isOpen={isModalOpen} onClose={closeModal} />
-
-        {/* Campaigns Section */}
-        <section>
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-gray-900">
-              Active Campaigns
-            </h3>
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent ml-4"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {campaigns.map((campaign) => (
-              <div
-                key={campaign.id}
-                className="transform transition-all duration-300 hover:scale-[1.02]"
-              >
-                <CampaignCard campaign={campaign} onOpenCreate={openModal} />
-              </div>
-            ))}
-          </div>
-        </section>
       </main>
 
       <Footer />
