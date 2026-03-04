@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import ProgressBar from "./ProgressBar";
 import { updateDonation } from "@/lib/firestore";
+import { FaFacebook, FaWhatsapp, FaTwitter } from "react-icons/fa";
 
 declare global {
   interface Window {
@@ -106,8 +107,8 @@ export default function CampaignCard({
       return;
     }
 
-    if (donationAmount < 10) {
-      alert("Minimum donation is GHS 10");
+    if (donationAmount < 5) {
+      alert("Minimum donation is GHS 5");
       return;
     }
 
@@ -263,6 +264,42 @@ export default function CampaignCard({
           >
             Register a Campaign
           </button>
+        </div>
+
+        {/* Social Share Buttons */}
+        <div className="mt-6 flex justify-center gap-3">
+          {/* WhatsApp */}
+          <a
+            href={`https://api.whatsapp.com/send?text=Check out this campaign: ${campaign.title} - https://kindr1.vercel.app`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-[#25D366] text-white hover:scale-110 transition-transform duration-200"
+            title="Share on WhatsApp"
+          >
+            <FaWhatsapp className="w-5 h-5" />
+          </a>
+
+          {/* Facebook */}
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=https://kindr1.vercel.app&quote=Check out this campaign: ${campaign.title}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-[#4267B2] text-white hover:scale-110 transition-transform duration-200"
+            title="Share on Facebook"
+          >
+            <FaFacebook className="w-5 h-5" />
+          </a>
+
+          {/* Twitter */}
+          <a
+            href={`https://twitter.com/intent/tweet?text=Check out this campaign: ${campaign.title} - https://kindr1.vercel.app`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-[#1DA1F2] text-white hover:scale-110 transition-transform duration-200"
+            title="Share on Twitter"
+          >
+            <FaTwitter className="w-5 h-5" />
+          </a>
         </div>
       </div>
       {showSuccessModal && (
