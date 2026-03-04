@@ -37,7 +37,22 @@ export default function RootLayout({
       >
         {children}
 
-        {/* Load Paystack script */}
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-2BJ5K0W31S"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2BJ5K0W31S');
+          `}
+        </Script>
+
+        {/* Paystack script */}
         <Script
           src="https://js.paystack.co/v1/inline.js"
           strategy="lazyOnload"
